@@ -1,22 +1,31 @@
-const mysql = require('mysql');
 const inquirer = require('inquirer');
+require('console.table');
+const connection = require('./db/connection');
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-  
-    // Your port, if not 3306
-    port: 3306,
-  
-    // Your username
-    user: 'root',
-  
-    // Be sure to update with your own MySQL password!
-    password: 'Blue3000!',
-    database: 'employee_db',
-  });
-  
-  connection.connect((err) => {
-    if (err) throw err;
-    console.log(`connected as id ${connection.threadId}`);
-    connection.end();
-  });
+function viewAllEmployees() {
+    connection.query(
+        'SELECT * FROM employees', (err, results) => {
+            if (err) throw err;
+            
+    )
+}
+
+function promptQuestions() {
+
+    inquirer.prompt([
+        {
+            type: 'list',
+            name: 'choice',
+            message: "What would you like to do?",
+            choices: ['View All Employees', 'View Employees by Department', 'View Employees by Role', "Adde Department", 'Add Employee Role', 'Add Employee', "Update Employee Role"],
+        }
+    ])
+    .then(answers => {
+        switch (answers.choice) {
+            case 'View All Employees':
+                
+        }
+    })
+}
+
+ 
