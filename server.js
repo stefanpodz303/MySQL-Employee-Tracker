@@ -13,12 +13,12 @@ function promptQuestions() {
             message: "What would you like to do?",
             choices: [
                 'View All Employees',
-                'View Departments',
-                'View Roles',
-                "Add Department",
-                'Add Employee Role',
-                'Add Employee',
-                "Update Employee Role"],
+                'View All Departments',
+                'View All Roles',
+                "Add a Department",
+                'Add an Employee Role',
+                'Add an Employee',
+                "Update an Employee Role"],
         }
     ])
         .then(answers => {
@@ -26,6 +26,16 @@ function promptQuestions() {
                 case 'View All Employees':
                     viewAllEmployees();
                 break;
+            
+                case 'View All Departments':
+                    viewAllDepartments();
+                break;
+
+                case 'View All Roles':
+                    viewAllRoles();
+                break;
+
+
 
 
             }
@@ -41,4 +51,25 @@ function viewAllEmployees() {
 
         })
 }
+
+function viewAllDepartments() {
+    connection.query(
+        'SELECT * FROM departments', (err, results) => {
+            if (err) throw err;
+            console.table(results);
+            promptQuestions();
+
+        })
+}
+
+function viewAllRoles() {
+    connection.query(
+        'SELECT * FROM roles', (err, results) => {
+            if (err) throw err;
+            console.table(results);
+            promptQuestions();
+
+        })
+}
+
 promptQuestions();
