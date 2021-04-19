@@ -49,7 +49,7 @@ function promptQuestions() {
                     addEmployee();
                     break;
 
-                case 'Update Employee Role':
+                case 'Update an Employee Role':
                     employeeUpdate();
                     break;
 
@@ -68,6 +68,7 @@ function viewAllEmployees() {
     connection.query(
         'SELECT * FROM employees', (err, results) => {
             if (err) throw err;
+            console.log("hit")
             console.table(results);
             promptQuestions();
 
@@ -234,39 +235,37 @@ function addEmployee() {
 
 function employeeUpdate() {
     inquirer
-      .prompt({
-        name: "id",
-        type: "input",
-        message: "Enter employee id",
-      })
-      .then(function (answer) {
-        var id = answer.id;
-  
-        inquirer
-          .prompt({
-            name: "roleId",
+        .prompt({
+            name: "id",
             type: "input",
-            message: "Enter role id",
-          })
-          .then(function (answer) {
-            var roleId = answer.roleId;
-  
-            var query = "UPDATE employees SET role_id=? WHERE id=?";
-            connection.query(query, [roleId, id], function (err, res) {
-              if (err) {
-                console.log(err);
-              }
-              promptQuestions();
-            });
-          });
-      });
-  }
+            message: "Enter employee id",
+        })
+        .then(function (answer) {
+            var id = answer.id;
 
-promptQuestions();
+            inquirer
+                .prompt({
+                    name: "roleId",
+                    type: "input",
+                    message: "Enter role id",
+                })
+                .then(function (answer) {
+                    var roleId = answer.roleId;
 
-
+                    var query = "UPDATE employees SET role_id=? WHERE id=?";
+                    connection.query(query, [roleId, id], function (err, res) {
+                        if (err) {
+                            console.log(err);
+                        }
+                        promptQuestions();
+                    });
+                });
+        });
+}
 
 // exit the app
 function exitApp() {
     connection.end();
 };
+
+promptQuestions();

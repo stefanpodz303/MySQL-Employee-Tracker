@@ -15,6 +15,7 @@
 - [Contributors](#Contributors)
 - [Test](#Test)
 - [Repository Link](#Repository)
+- [Deployed Link](#Deployed)
 - [GitHub Info](#GitHub) 
 
 ## Description 
@@ -40,6 +41,9 @@ None
 
 ## Repository
 
+
+## Deployed
+N/A
 
 ## GitHub
 - stefanpodz303
