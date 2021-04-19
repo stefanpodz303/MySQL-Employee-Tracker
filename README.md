@@ -4,7 +4,7 @@
 
 ## Video Demonstration Link
 
-
+https://drive.google.com/file/d/1AJFplzfT3nCziVo_C1V3uinrdrej_krH/view?usp=sharing
 
 ## Table of contents
 - [Description](#Description)
@@ -41,6 +41,7 @@ None
 
 ## Repository
 
+https://github.com/stefanpodz303/MySQL-Employee-Tracker
 
 ## Deployed
 N/A
